@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.rentnest.controllers.BrowseController">
+
+    <top>
+        <Button text="Back" onAction="#handleBack" style="-fx-background-color: gray; -fx-text-fill: white;" />
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="Browse Properties" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <Button text="Open Property Details" onAction="#handleOpenDetails" style="-fx-background-color: #2F64F9; -fx-text-fill: white;" />
+        </VBox>
+    </center>
+
+</BorderPane>

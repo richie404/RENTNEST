@@ -8,8 +8,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         Router.setStage(stage);
-        Router.goToIndex(); // ✅ updated from goTo("homepage.fxml")
+        Router.goToHomePage(); // ✅ now matches Router + homepage.fxml
     }
+
 
     public static void main(String[] args) {
         launch();

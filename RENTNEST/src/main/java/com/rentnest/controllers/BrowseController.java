@@ -7,7 +7,7 @@ public class BrowseController {
 
     @FXML
     private void handleBack() {
-        Router.goToIndex();
+        Router.goToHomePage();
     }
 
     @FXML

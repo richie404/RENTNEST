@@ -7,7 +7,7 @@ public class ListingsController {
 
     @FXML
     private void handleBack() {
-        Router.goToIndex();
+        Router.goToHomePage();
     }
 
     @FXML

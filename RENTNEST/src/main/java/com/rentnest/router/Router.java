@@ -17,22 +17,23 @@ public class Router {
 
     private static Scene loadScene(String fxmlFile) {
         try {
-            // Note: fxml files are in resources/views/
             FXMLLoader loader = new FXMLLoader(Router.class.getResource("/views/" + fxmlFile));
             Parent root = loader.load();
-            return new Scene(root, 900, 600); // Fixed size window
+            return new Scene(root, 1000, 700); // consistent size across app
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Cannot load FXML file: " + fxmlFile, e);
         }
     }
 
-    // Navigation methods
-    public static void goToIndex() {
+    // ========== PUBLIC NAVIGATION ==========
+
+    public static void goToHomePage() {
         stage.setScene(loadScene("homepage.fxml"));
         stage.setTitle("RentNest - Home");
         stage.show();
     }
+
 
     public static void goToLogin() {
         stage.setScene(loadScene("login.fxml"));
@@ -61,6 +62,26 @@ public class Router {
     public static void goToDetails() {
         stage.setScene(loadScene("details.fxml"));
         stage.setTitle("RentNest - Property Details");
+        stage.show();
+    }
+
+    // ========== ROLE-BASED NAVIGATION ==========
+
+    public static void goToAdminDashboard() {
+        stage.setScene(loadScene("AdminDashboard.fxml"));
+        stage.setTitle("RentNest - Admin Dashboard");
+        stage.show();
+    }
+
+    public static void goToOwnerDashboard() {
+        stage.setScene(loadScene("OwnerDashboard.fxml"));
+        stage.setTitle("RentNest - Home Owner Dashboard");
+        stage.show();
+    }
+
+    public static void goToRenterDashboard() {
+        stage.setScene(loadScene("RenterDashboard.fxml"));
+        stage.setTitle("RentNest - Renter Dashboard");
         stage.show();
     }
 }

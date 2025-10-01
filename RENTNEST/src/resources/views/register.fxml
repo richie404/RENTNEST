@@ -32,6 +32,9 @@
             <Label text="Confirm Password"/>
             <PasswordField fx:id="confirmPasswordField" promptText="Re-enter password" styleClass="password-field"/>
 
+            <Label text="Role"/>
+            <ComboBox fx:id="roleComboBox" styleClass="combo-box"/>
+
             <Button text="Register" onAction="#handleSubmitRegister" styleClass="button-register"/>
             <Button text="Back" onAction="#handleBack" styleClass="button-secondary"/>
         </VBox>

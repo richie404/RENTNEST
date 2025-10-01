@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.rentnest.controllers.AdminDashboardController"
+            stylesheets="@../css/app.css">
+
+    <!-- Top Navbar -->
+    <top>
+        <HBox styleClass="header">
+            <Label text="⚙️ RentNest Admin" styleClass="label-title" />
+            <Button text="Logout" onAction="#handleLogout" styleClass="button-secondary"/>
+        </HBox>
+    </top>
+
+    <!-- Sidebar -->
+    <left>
+        <VBox styleClass="sidebar" spacing="15" padding="15">
+            <Button text="User Management" onAction="#handleUsers" styleClass="button-primary"/>
+            <Button text="Listings" onAction="#handleListings" styleClass="button-primary"/>
+            <Button text="Reports" onAction="#handleReports" styleClass="button-primary"/>
+            <Button text="Payments" onAction="#handlePayments" styleClass="button-primary"/>
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="20" padding="20">
+            <Label text="Admin Dashboard" styleClass="page-title"/>
+            <Label text="Welcome, manage platform operations here." styleClass="card-subtitle"/>
+            <HBox spacing="20">
+                <Button text="📊 View Analytics" styleClass="button-primary"/>
+                <Button text="📢 Send Notifications" styleClass="button-primary"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

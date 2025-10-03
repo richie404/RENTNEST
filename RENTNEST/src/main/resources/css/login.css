@@ -1,0 +1,65 @@
+/* ===== Root Background ===== */
+.root {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #ffffff 0%, #ffffcc 100%);
+}
+
+/* ===== Login Card ===== */
+.login-card {
+    -fx-background-color: white;
+    -fx-padding: 30;
+    -fx-spacing: 20;
+    -fx-alignment: center;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 4);
+    -fx-min-width: 300;
+}
+
+/* ===== Title ===== */
+.login-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2F64F9;
+}
+
+/* ===== Labels ===== */
+.label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #444;
+}
+
+/* ===== Text Fields ===== */
+.text-field, .password-field {
+    -fx-background-color: #f9f9f9;
+    -fx-padding: 8;
+    -fx-font-size: 13px;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-color: #ddd;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #663300;
+    -fx-background-color: white;
+}
+
+/* ===== Buttons ===== */
+.button-login {
+    -fx-background-color: #663300;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 18;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.button-login:hover {
+    -fx-background-color: #FFCC99;
+}
+
+.button-secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: #663300;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}

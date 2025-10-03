@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.rentnest.controllers.LoginController"
+            stylesheets="@../css/login.css">
+
+    <!-- Center everything -->
+    <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <!-- Login Card -->
+        <VBox style="-fx-background-color: white; -fx-padding: 30; -fx-spacing: 15; -fx-alignment: center; -fx-max-width: 320px; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 4);">
+
+            <Label text="Welcome Back 👋" styleClass="login-title"/>
+            <Label text="Login to your account" style="-fx-text-fill: #555; -fx-font-size: 12px;"/>
+
+            <Label text="Username"/>
+            <TextField fx:id="usernameField" promptText="Enter your username" styleClass="text-field"/>
+
+            <Label text="Password"/>
+            <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="password-field"/>
+
+            <Button text="Login" onAction="#handleSubmitLogin" styleClass="button-login"/>
+            <Button text="Back" onAction="#handleBack" styleClass="button-secondary"/>
+        </VBox>
+    </VBox>
+</AnchorPane>

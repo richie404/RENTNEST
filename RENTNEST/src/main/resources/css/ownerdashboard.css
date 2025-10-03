@@ -1,0 +1,59 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom, #ffffff 0%, #e6f7ff 100%);
+    -fx-font-family: "Inter";
+}
+
+/* Navbar/Header */
+.header {
+    -fx-padding: 15;
+    -fx-spacing: 20;
+    -fx-background-color: linear-gradient(to right, #0099ff, #66ccff);
+    -fx-alignment: center-left;
+}
+
+.label-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Page Title */
+.page-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+/* Buttons */
+.button-primary {
+    -fx-background-color: #0066cc;
+    -fx-text-fill: white;
+    -fx-padding: 8 16;
+    -fx-background-radius: 6;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button-primary:hover {
+    -fx-background-color: #004c99;
+}
+
+.button-secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button-secondary:hover {
+    -fx-underline: true;
+}
+
+/* Property List */
+.list-view {
+    -fx-border-color: #ccc;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+    -fx-font-size: 14px;
+}

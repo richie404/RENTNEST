@@ -1,0 +1,57 @@
+/* ===== Global Reset ===== */
+.root {
+    -fx-font-family: "Inter";
+    -fx-background-color: linear-gradient(to bottom, #ffffff 0%, #ffffcc 100%);
+}
+
+/* ===== Header (Navbar) ===== */
+.header {
+    -fx-padding: 15 20;
+    -fx-spacing: 20;
+    -fx-background-color: linear-gradient(to right, #660033, #993333);
+    -fx-alignment: center-left;
+}
+
+.header-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;   /* White header text */
+}
+
+.header-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;   /* White button text */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.header-button:hover {
+    -fx-underline: true;
+}
+
+/* ===== Page Titles ===== */
+.page-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #660033;
+}
+
+.page-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666;
+}
+
+/* ===== Buttons ===== */
+.button-primary {
+    -fx-background-color: #663300;
+    -fx-text-fill: white;
+    -fx-padding: 8 18;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+.button-primary:hover {
+    -fx-background-color: #FFCC99;
+}

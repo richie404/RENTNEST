@@ -1,0 +1,27 @@
+/* chat.css — RentNest Chat Assistant Styles */
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+}
+
+.vbox {
+    -fx-spacing: 10;
+}
+
+.button:hover {
+    -fx-opacity: 0.85;
+}
+
+.text-field:focused {
+    -fx-border-color: #993366;
+    -fx-border-width: 1.4;
+}

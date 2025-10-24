@@ -1,0 +1,107 @@
+/* ====== Modern Color System & Variables (Maroon/Lilac Theme) ====== */
+:root {
+  -fx-primary: #591734;              /* Dark Red/Maroon */
+  -fx-primary-hover: #4a132b;       /* Darker maroon for hover */
+  -fx-primary-light: #E6D5E9;       /* Pink/Lilac */
+
+  -fx-surface: #F5F5F5;             /* Light Gray/Off-White */
+  -fx-surface-elevated: #F5F5F5;    /* Light Gray/Off-White */
+  -fx-surface-card: #FFFFFF;        /* Pure White (for cards) */
+
+  -fx-text-primary: #000000;       /* Black Text */
+  -fx-text-secondary: #666666;     /* Gray Text */
+
+  -fx-border-light: #E0E0E0;       /* A neutral light gray border */
+  -fx-border-medium: #E6D5E9;      /* Lilac border for themed elements */
+
+  -fx-shadow-strong: rgba(89, 23, 52, 0.15); /* Maroon-tinted shadow */
+  -fx-gradient-surface: linear-gradient(180deg, #FFFFFF 0%, #F5F5F5 100%); /* White to Light Gray */
+}
+
+
+.root {
+    -fx-background-color: -fx-gradient-surface;
+    -fx-font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.login-card {
+    -fx-background-color: -fx-surface-card;
+    -fx-padding: 30 40 30 40;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-strong, 20, 0.3, 0, 5);
+    -fx-spacing: 18;
+    -fx-alignment: center;
+}
+
+.login-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: 800;
+    -fx-text-fill: -fx-primary;
+}
+
+.text-field, .password-field {
+    -fx-background-color: -fx-surface-elevated;
+    -fx-border-color: -fx-border-medium;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 12 16;
+    -fx-font-size: 14px;
+    -fx-pref-width: 260px;
+    -fx-prompt-text-fill: -fx-text-secondary;
+}
+.text-field:focused, .password-field:focused {
+    -fx-border-color: -fx-primary;
+    -fx-background-color: -fx-surface-card;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-strong, 10, 0.4, 0, 0);
+}
+
+.button-login {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-padding: 12 24;
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+    -fx-pref-width: 140px;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-strong, 8, 0.3, 0, 2);
+}
+.button-login:hover {
+    -fx-background-color: -fx-primary-hover;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.button-secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-primary;
+    -fx-underline: true;
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+    -fx-cursor: hand;
+}
+.button-secondary:hover {
+    -fx-text-fill: -fx-primary-hover;
+}
+
+/* Style for the "Back to Home" button */
+.button-back-home {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-border-color: -fx-border-medium;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-margin-top: 10px; /* Added margin */
+}
+.button-back-home:hover {
+    -fx-background-color: -fx-surface-elevated;
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-primary;
+}

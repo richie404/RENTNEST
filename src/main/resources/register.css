@@ -1,0 +1,79 @@
+/* ====== Modern Color System & Variables (Maroon/Lilac Theme) ====== */
+:root {
+  -fx-primary: #591734;              /* Dark Red/Maroon */
+  -fx-primary-hover: #4a132b;       /* Darker maroon for hover */
+  -fx-primary-light: #E6D5E9;       /* Pink/Lilac */
+  -fx-surface: #F5F5F5;             /* Light Gray/Off-White */
+  -fx-surface-elevated: #F5F5F5;    /* Light Gray/Off-White */
+  -fx-surface-card: #FFFFFF;        /* Pure White (for cards) */
+  -fx-text-primary: #000000;       /* Black Text */
+  -fx-text-secondary: #666666;     /* Gray Text */
+  -fx-border-light: #E0E0E0;       /* A neutral light gray border */
+  -fx-border-medium: #E6D5E9;      /* Lilac border for themed elements */
+  -fx-shadow-strong: rgba(89, 23, 52, 0.15); /* Maroon-tinted shadow */
+  -fx-gradient-surface: linear-gradient(180deg, #FFFFFF 0%, #F5F5F5 100%); /* White to Light Gray */
+}
+
+.root { 
+    -fx-background-color: -fx-gradient-surface; 
+    -fx-font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.register-card {
+    -fx-background-color: -fx-surface-card;
+    -fx-padding: 30;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-strong, 10, 0.2, 0, 4);
+}
+
+.register-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary;
+}
+
+.text-field, .password-field, .combo-box {
+    -fx-background-color: -fx-surface-elevated;
+    -fx-border-color: -fx-border-medium;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+}
+.text-field:focused, .password-field:focused, .combo-box:focused {
+    -fx-border-color: -fx-primary;
+}
+
+.button-register {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+.button-register:hover { -fx-background-color: -fx-primary-hover; }
+
+.button-secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-primary;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+/* Back to Home button (shared style) */
+.button-back-home {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-border-color: -fx-border-medium;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+.button-back-home:hover {
+    -fx-background-color: -fx-surface-elevated;
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-primary;
+}

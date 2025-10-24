@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ListingsController"
+            stylesheets="@listings.css"
+            styleClass="root">
+
+    <!-- 🔹 Header Bar -->
+    <top>
+        <HBox spacing="15" alignment="CENTER_LEFT" styleClass="form-container">
+            <padding>
+                <Insets top="10" right="15" bottom="10" left="15"/>
+            </padding>
+
+            <Label text="📋 Manage My Listings" styleClass="form-title"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="⬅ Back" onAction="#handleBack" styleClass="button-primary"/>
+        </HBox>
+    </top>
+
+    <!-- 🔹 Table Section -->
+    <center>
+        <VBox spacing="12" alignment="CENTER" styleClass="form-container">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- ✅ TableView Styled -->
+            <TableView fx:id="table" prefHeight="400" prefWidth="700">
+                <columns>
+                    <TableColumn fx:id="colTitle" text="Title" prefWidth="150"/>
+                    <TableColumn fx:id="colType" text="Type" prefWidth="100"/>
+                    <TableColumn fx:id="colLocation" text="Location" prefWidth="150"/>
+                    <TableColumn fx:id="colPrice" text="Price/mo" prefWidth="100"/>
+                    <TableColumn fx:id="colSize" text="Size (sqft)" prefWidth="100"/>
+                </columns>
+            </TableView>
+
+            <!-- 🔘 Action Buttons -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="✏️ Edit Selected" onAction="#handleEdit" styleClass="button-primary"/>
+                <Button text="🗑 Delete Selected" onAction="#handleDelete" styleClass="button-primary"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

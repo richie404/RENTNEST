@@ -1,0 +1,105 @@
+/* ====== Unified Dashboard Theme (Owner + Renter) ====== */
+:root {
+  -fx-primary: #591734;
+  -fx-primary-hover: #4a132b;
+  -fx-primary-light: #E6D5E9;
+  -fx-surface: #F5F5F5;
+  -fx-surface-card: #FFFFFF;
+  -fx-text-primary: #000000;
+  -fx-text-secondary: #666666;
+  -fx-border-light: #E0E0E0;
+  -fx-border-medium: #E6D5E9;
+  -fx-shadow-strong: rgba(89, 23, 52, 0.15);
+  -fx-gradient-primary: linear-gradient(135deg, #591734 0%, #8a3b5e 100%);
+}
+
+/* Root */
+.root {
+  -fx-font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  -fx-background-color: -fx-surface;
+}
+
+/* Header */
+.header {
+  -fx-background-color: -fx-gradient-primary;
+  -fx-padding: 16 24;
+  -fx-effect: dropshadow(gaussian, -fx-shadow-strong, 12, 0.2, 0, 2);
+}
+.label-title {
+  -fx-text-fill: Black;
+  -fx-font-size: 24px;
+  -fx-font-weight: 800;
+}
+
+/* Buttons */
+.button-primary {
+  -fx-background-color: -fx-primary;
+  -fx-text-fill: white;
+  -fx-background-radius: 8;
+  -fx-padding: 8 18;
+  -fx-cursor: hand;
+  -fx-font-weight: 700;
+}
+.button-primary:hover {
+  -fx-background-color: -fx-primary-hover;
+}
+.button-secondary {
+  -fx-background-color: white;
+  -fx-text-fill: -fx-primary;
+  -fx-border-color: -fx-border-medium;
+  -fx-border-radius: 8;
+  -fx-background-radius: 8;
+  -fx-padding: 8 16;
+  -fx-cursor: hand;
+}
+.button-secondary:hover {
+  -fx-background-color: -fx-primary-light;
+}
+
+/* Tabs – Owner style */
+.tab-pane {
+  -fx-tab-min-width: 140;
+  -fx-tab-max-width: 140;
+  -fx-background-color: transparent;
+}
+.tab-pane .tab-header-area {
+  -fx-background-color: #d9d9d9;
+  -fx-padding: 2 0 0 0;
+}
+.tab {
+  -fx-background-color: #d9d9d9;
+  -fx-text-fill: -fx-text-primary;
+  -fx-font-weight: 600;
+  -fx-font-size: 14px;
+  -fx-padding: 8 16;
+  -fx-border-color: transparent transparent #c0c0c0 transparent;
+}
+.tab:selected {
+  -fx-background-color: #fff;
+  -fx-border-color: #c0c0c0 #c0c0c0 #fff #c0c0c0;
+  -fx-border-width: 1;
+  -fx-font-weight: 700;
+}
+.tab-label {
+  -fx-text-fill: -fx-text-primary;
+}
+.tab-pane .tab-content-area {
+  -fx-background-color: #fff;
+  -fx-border-color: #c0c0c0;
+  -fx-border-width: 1;
+}
+
+/* ListView */
+.list-view {
+  -fx-background-color: -fx-surface-card;
+  -fx-border-color: -fx-border-light;
+  -fx-border-radius: 10;
+  -fx-background-radius: 10;
+}
+
+/* Page Title */
+.page-title {
+  -fx-font-size: 22px;
+  -fx-font-weight: 700;
+  -fx-text-fill: -fx-primary;
+}

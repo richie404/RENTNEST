@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="LoginController"
+           prefWidth="900" prefHeight="600"
+           stylesheets="@login.css"
+           styleClass="root">
+
+    <!-- Centered Login Card -->
+    <VBox alignment="CENTER"
+          spacing="18"
+          prefWidth="300"
+          prefHeight="380"
+          styleClass="login-card">
+
+        <padding>
+            <Insets top="30" bottom="30" left="20" right="20"/>
+        </padding>
+
+        <children>
+
+            <!-- Title -->
+            <Label text="RentNest Login"
+                   styleClass="login-title"/>
+
+            <!-- Input Fields -->
+            <VBox spacing="10" alignment="CENTER">
+                <TextField fx:id="emailField"
+                           promptText="Email address"
+                           styleClass="text-field"/>
+
+                <PasswordField fx:id="passwordField"
+                               promptText="Password"
+                               styleClass="password-field"/>
+            </VBox>
+
+            <!-- Login Button -->
+            <Button text="Login"
+                    fx:id="loginButton"
+                    onAction="#handleSubmitLogin"
+                    styleClass="button-login"/>
+
+            <!-- Keeps focus consistent -->
+            <Button fx:id="loginButtonHoverFix"
+                    visible="false" managed="false"/>
+
+            <!-- Register Link -->
+            <Hyperlink text="Don't have an account? Register"
+                       onAction="#handleGoRegister"
+                       styleClass="button-secondary"/>
+
+            <!-- Admin Login -->
+            <Hyperlink text="Admin Login"
+                       onAction="#handleAdminLogin"
+                       styleClass="button-secondary"/>
+
+            <!-- Back to Home -->
+            <Button text="⬅ Back to Home"
+                    onAction="#handleBackToHome"
+                    styleClass="button-back-home"/>
+        </children>
+    </VBox>
+</StackPane>

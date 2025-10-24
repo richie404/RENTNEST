@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="AddListingController"
+            stylesheets="@addlisting.css">
+
+    <top>
+        <HBox styleClass="header" spacing="10" alignment="CENTER_LEFT">
+            <Label text="🏡 Add New Property" styleClass="label-title"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="Back" onAction="#handleBack" styleClass="button-secondary"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox fx:id="formContainer" spacing="12" alignment="CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- Basic Info -->
+            <TextField fx:id="titleField" promptText="Property Title" styleClass="text-field"/>
+            <TextField fx:id="locationField" promptText="Location" styleClass="text-field"/>
+            <ComboBox fx:id="typeComboBox" promptText="Select Type" styleClass="combo-box"/>
+            <TextField fx:id="priceField" promptText="Price (BDT/month)" styleClass="text-field"/>
+            <TextField fx:id="depositField" promptText="Security Deposit (optional)" styleClass="text-field"/>
+            <TextField fx:id="sizeField" promptText="Size (sqft, optional)" styleClass="text-field"/>
+            <TextField fx:id="imageUrlField" promptText="Image URL (optional)" styleClass="text-field"/>
+
+            <!-- Extra Options -->
+            <HBox spacing="20" alignment="CENTER">
+                <CheckBox fx:id="furnishedCheck" text="Furnished"/>
+                <CheckBox fx:id="bachelorCheck" text="Bachelor Allowed" selected="true"/>
+                <CheckBox fx:id="familyCheck" text="Family Allowed" selected="true"/>
+            </HBox>
+
+            <!-- Description -->
+            <TextArea fx:id="descriptionArea" promptText="Description" prefRowCount="3" styleClass="text-area"/>
+
+            <!-- Submit -->
+            <Button text="Save Listing" onAction="#handleSave" styleClass="button-primary"/>
+        </VBox>
+    </center>
+</BorderPane>

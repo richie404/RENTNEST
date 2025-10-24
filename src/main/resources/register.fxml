@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="RegisterController"
+            stylesheets="@register.css"
+            styleClass="root">
+
+    <children>
+        <VBox alignment="CENTER"
+              AnchorPane.topAnchor="0"
+              AnchorPane.bottomAnchor="0"
+              AnchorPane.leftAnchor="0"
+              AnchorPane.rightAnchor="0"
+              spacing="18">
+
+            <!-- Register Card -->
+            <VBox alignment="CENTER" spacing="12"
+                  styleClass="register-card">
+
+                <children>
+                    <!-- Title -->
+                    <Label text="Create Account ✨"
+                           styleClass="register-title"/>
+
+                    <!-- Input Fields -->
+                    <VBox spacing="10" alignment="CENTER">
+                        <TextField fx:id="nameField"
+                                   promptText="Enter your full name"
+                                   styleClass="text-field"/>
+
+                        <TextField fx:id="usernameField"
+                                   promptText="Choose a username"
+                                   styleClass="text-field"/>
+
+                        <TextField fx:id="emailField"
+                                   promptText="Enter your email"
+                                   styleClass="text-field"/>
+
+                        <PasswordField fx:id="passwordField"
+                                       promptText="Create a password"
+                                       styleClass="password-field"/>
+
+                        <PasswordField fx:id="confirmPasswordField"
+                                       promptText="Re-enter password"
+                                       styleClass="password-field"/>
+
+                        <ComboBox fx:id="roleBox"
+                                  promptText="Select Role"
+                                  styleClass="combo-box"
+                                  prefWidth="220"/>
+                    </VBox>
+
+                    <!-- Register Button -->
+                    <Button text="Register"
+                            onAction="#handleSubmitRegister"
+                            styleClass="button-register"/>
+
+                    <Hyperlink text="Already have an account? Log into your account!"
+                               onAction="#handleGoLogin"
+                               styleClass="button-secondary"/>
+                    <!-- Back to Home -->
+                    <Button text="⬅ Back to Home"
+                            onAction="#handleBackHome"
+                            styleClass="button-back-home"/>
+                </children>
+            </VBox>
+        </VBox>
+    </children>
+</AnchorPane>

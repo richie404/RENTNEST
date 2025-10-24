@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="TopBarController"
+            stylesheets="@TopBar.css"
+            prefHeight="55">
+
+    <HBox spacing="20"
+          alignment="CENTER_LEFT"
+          styleClass="topbar"
+          AnchorPane.topAnchor="0.0"
+          AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0">
+
+        <!-- 🏠 Brand -->
+        <Label text="🏠 RentNest" styleClass="brand"/>
+
+        <!-- 🔗 Navigation Links -->
+        <HBox spacing="16" alignment="CENTER" HBox.hgrow="ALWAYS">
+            <Hyperlink text="Home" onAction="#handleHome" styleClass="nav-link"/>
+            <Hyperlink fx:id="dashboardLink" text="Dashboard" onAction="#handleDashboard" styleClass="nav-link"/>
+        </HBox>
+
+        <!-- 👤 User Info + Logout -->
+        <HBox spacing="12" alignment="CENTER_RIGHT">
+            <Label fx:id="userLabel" text="Logged in as: Guest" styleClass="user-label"/>
+            <Button fx:id="btnLogout" text="Logout" onAction="#handleLogout" styleClass="btn-primary"/>
+        </HBox>
+
+    </HBox>
+</AnchorPane>

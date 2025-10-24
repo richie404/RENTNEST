@@ -1,0 +1,10 @@
+/* Gentle default fade for page load */
+.root {
+    -fx-opacity: 0;
+    -fx-animation: fadein 0.8s ease-in forwards;
+}
+
+@keyframes fadein {
+    from { -fx-opacity: 0; }
+    to { -fx-opacity: 1; }
+}

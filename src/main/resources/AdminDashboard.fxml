@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="AdminDashboardController"
+            stylesheets="@admindashboard.css"
+            prefWidth="950" prefHeight="700">
+
+    <!-- 🔹 Shared Top Bar -->
+    <top>
+        <fx:include source="TopBar.fxml" fx:id="topBar"/>
+    </top>
+
+    <center>
+        <BorderPane>
+
+            <!-- 🔹 Header -->
+            <top>
+                <HBox styleClass="header">
+                    <padding>
+                        <Insets top="10" right="15" bottom="10" left="15"/>
+                    </padding>
+                    <Label text="⚙️ Admin Dashboard" styleClass="header-title"/>
+                    <Pane HBox.hgrow="ALWAYS"/>
+                </HBox>
+            </top>
+
+            <!-- 🔹 Sidebar Navigation -->
+            <left>
+                <VBox spacing="10" style="-fx-background-color: #fff3f6;">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+
+                    <Button text="User Management"
+                            onAction="#showUserManagement"
+                            styleClass="button-primary"
+                            maxWidth="Infinity"/>
+
+                    <Button text="Listing Management"
+                            onAction="#showListingManagement"
+                            styleClass="button-primary"
+                            maxWidth="Infinity"/>
+
+                    <Button text="Booking Management"
+                            onAction="#showBookingManagement"
+                            styleClass="button-primary"
+                            maxWidth="Infinity"/>
+
+                    <Button text="Payments &amp; Reports"
+                            onAction="#showPayments"
+                            styleClass="button-primary"
+                            maxWidth="Infinity"/>
+
+                    <Button text="Analytics"
+                            onAction="#showAnalytics"
+                            styleClass="button-primary"
+                            maxWidth="Infinity"/>
+
+                    <Button text="Activity Logs"
+                            onAction="#showLogs"
+                            styleClass="button-primary"
+                            maxWidth="Infinity"/>
+                </VBox>
+            </left>
+
+            <!-- 🔹 Dynamic Content Area -->
+            <center>
+                <StackPane fx:id="contentArea">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <Label text="Welcome, Admin!"
+                           style="-fx-font-size: 18px; -fx-text-fill: #660033;"/>
+                </StackPane>
+            </center>
+
+        </BorderPane>
+    </center>
+</BorderPane>

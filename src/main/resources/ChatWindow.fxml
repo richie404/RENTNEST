@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ChatWindowController"
+            stylesheets="@ChatWindow.css"
+            prefWidth="880" prefHeight="620">
+
+    <!-- Header -->
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="header">
+            <Label text="RentNest Chat" styleClass="header-title"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Label fx:id="chatTitle" text="Chat" styleClass="header-sub"/>
+            <Button text="Back" onAction="#handleBack" styleClass="btn-ghost"/>
+        </HBox>
+    </top>
+
+    <!-- Messages -->
+    <center>
+        <ScrollPane fx:id="scroll" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                    styleClass="scroll">
+            <VBox fx:id="messages" styleClass="messages" fillWidth="true"/>
+        </ScrollPane>
+    </center>
+
+    <!-- Composer -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_LEFT" styleClass="composer">
+            <TextField fx:id="input" promptText="Type your message…" HBox.hgrow="ALWAYS" />
+            <Button text="Send" onAction="#handleSend" styleClass="btn-primary"/>
+        </HBox>
+    </bottom>
+</BorderPane>

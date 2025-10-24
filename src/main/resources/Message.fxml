@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="MessageController"
+            stylesheets="@Message.css"
+            prefWidth="900" prefHeight="650">
+
+    <!-- 🌈 Header -->
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header">
+            <Label fx:id="chatTitle" text="Chat" styleClass="header-title"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="Back" onAction="#handleBack" styleClass="header-btn"/>
+            <Button text="Refresh" onAction="#handleRefresh" styleClass="header-btn"/>
+        </HBox>
+    </top>
+
+    <!-- 🗨️ Message Container (Scrollable) -->
+    <center>
+        <ScrollPane fx:id="scrollPane"
+                    fitToWidth="true"
+                    hbarPolicy="NEVER"
+                    vbarPolicy="AS_NEEDED"
+                    styleClass="chat-scroll">
+            <VBox fx:id="messageContainer"
+                  styleClass="message-container"
+                  prefWidth="850"/>
+        </ScrollPane>
+    </center>
+
+    <!-- ✏️ Message Input Bar -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_LEFT" styleClass="input-bar">
+            <TextField fx:id="messageField"
+                       promptText="Type a message..."
+                       HBox.hgrow="ALWAYS"
+                       styleClass="message-field"/>
+            <Button fx:id="sendButton"
+                    text="Send"
+                    onAction="#handleSend"
+                    styleClass="send-button"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

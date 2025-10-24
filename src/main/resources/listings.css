@@ -1,0 +1,86 @@
+/* ====== Modern Color System & Variables (Maroon/Lilac Theme) ====== */
+:root {
+  -fx-primary: #591734;              /* Dark Red/Maroon */
+  -fx-primary-hover: #4a132b;        /* Darker Maroon for hover */
+  -fx-primary-light: #E6D5E9;        /* Pink/Lilac */
+  -fx-surface: #F5F5F5;              /* Light Gray/Off-White */
+  -fx-surface-card: #FFFFFF;         /* Pure White (card background) */
+  -fx-text-primary: #000000;         /* Main Text */
+  -fx-text-secondary: #666666;       /* Subtle Gray */
+  -fx-border-light: #E0E0E0;         /* Neutral Border */
+  -fx-border-medium: #E6D5E9;        /* Lilac Border */
+  -fx-shadow-strong: rgba(89, 23, 52, 0.15); /* Maroon Shadow */
+  -fx-gradient-primary: linear-gradient(135deg, #591734 0%, #8a3b5e 100%);
+  -fx-gradient-surface: linear-gradient(180deg, #FFFFFF 0%, #F5F5F5 100%);
+}
+
+/* ====== Root Background ====== */
+.root {
+    -fx-font-family: "Inter", "Segoe UI", sans-serif;
+    -fx-background-color: -fx-gradient-surface;
+}
+
+/* ====== Form Container ====== */
+.form-container {
+    -fx-spacing: 15;
+    -fx-alignment: center;
+    -fx-padding: 30;
+    -fx-background-color: -fx-surface-card;
+    -fx-border-color: -fx-border-light;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-strong, 10, 0.15, 0, 2);
+}
+
+/* ====== Form Title ====== */
+.form-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -fx-primary;
+}
+
+/* ====== Input Fields ====== */
+.text-field, .text-area {
+    -fx-pref-width: 320px;
+    -fx-padding: 10;
+    -fx-background-color: -fx-surface;
+    -fx-border-color: -fx-border-light;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-font-size: 13px;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: -fx-border-medium;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-strong, 8, 0.3, 0, 1);
+}
+
+.text-field:hover, .text-area:hover {
+    -fx-border-color: -fx-border-medium;
+}
+
+/* ====== Placeholder Text ====== */
+.text-field:prompt-text, .text-area:prompt-text {
+    -fx-text-fill: derive(-fx-text-secondary, 30%);
+}
+
+/* ====== Primary Button ====== */
+.button-primary {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-font-weight: 600;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+}
+
+.button-primary:hover {
+    -fx-background-color: -fx-primary-hover;
+}
+
+/* ====== Optional Transitions ====== */
+.text-field, .text-area, .button-primary {
+    -fx-transition: all 0.2s ease-in-out;
+}

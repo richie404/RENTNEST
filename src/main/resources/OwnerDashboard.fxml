@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="OwnerDashboardController"
+            stylesheets="@ownerdashboard.css"
+            prefWidth="950" prefHeight="700">
+
+    <!-- 🔹 Shared Top Bar -->
+    <top>
+        <fx:include source="TopBar.fxml" fx:id="topBar"/>
+    </top>
+
+    <!-- 🔹 Main content -->
+    <center>
+        <TabPane prefWidth="900" prefHeight="650">
+            <tabs>
+
+                <!-- 🏠 Dashboard Tab -->
+                <Tab text="Dashboard" closable="false">
+                    <BorderPane>
+                        <top>
+                            <HBox spacing="16" alignment="CENTER_LEFT" styleClass="header">
+                                <padding>
+                                    <Insets top="10" right="15" bottom="10" left="15"/>
+                                </padding>
+
+                                <Label text="🏠 Owner Dashboard" styleClass="label-title"/>
+                                <Pane HBox.hgrow="ALWAYS"/>
+                                <Button text="Manage Listings"
+                                        onAction="#handleManageListings"
+                                        styleClass="button-secondary"/>
+                            </HBox>
+                        </top>
+
+                        <center>
+                            <VBox spacing="18" alignment="TOP_LEFT">
+                                <padding>
+                                    <Insets top="20" right="20" bottom="20" left="20"/>
+                                </padding>
+
+                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                    <Label text="Your Properties" styleClass="page-title"/>
+                                    <Pane HBox.hgrow="ALWAYS"/>
+                                    <Button text="+ Add Listing"
+                                            onAction="#handleAddListing"
+                                            styleClass="button-primary"/>
+                                </HBox>
+
+                                <ListView fx:id="propertyList"
+                                          prefHeight="440"
+                                          style="-fx-background-color: #ffffff;
+                                                 -fx-background-radius: 8;
+                                                 -fx-border-color: #d9d9d9;
+                                                 -fx-border-radius: 8;"/>
+
+                                <Label text="Select 'Manage Listings' to edit or delete your properties."
+                                       style="-fx-font-size: 13px; -fx-text-fill: #555;"
+                                       wrapText="true"/>
+                            </VBox>
+                        </center>
+                    </BorderPane>
+                </Tab>
+
+                <!-- 💬 Messages Tab -->
+                <Tab text="Messages" closable="false">
+                    <VBox spacing="12" alignment="TOP_LEFT">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label text="Messages from Renters" styleClass="page-title"/>
+
+                        <ListView fx:id="messageList"
+                                  prefHeight="460"
+                                  style="-fx-background-color: #ffffff;
+                                         -fx-border-color: #d9d9d9;
+                                         -fx-border-radius: 8;
+                                         -fx-background-radius: 8;"/>
+
+                        <HBox spacing="10" alignment="CENTER_RIGHT">
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Button text="💬 View Chat"
+                                    onAction="#handleViewChat"
+                                    styleClass="button-primary"/>
+                        </HBox>
+                    </VBox>
+                </Tab>
+
+                <!-- 📅 My Bookings Tab -->
+                <Tab text="My Bookings" closable="false">
+                    <fx:include source="OwnerBookings.fxml" fx:id="bookingsTab"/>
+                </Tab>
+
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ChatController"
+            stylesheets="@chat.css"
+            prefWidth="900" prefHeight="650">
+
+    <!-- 🔹 Header -->
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #660033; -fx-padding: 12;">
+            <Label text="💬 RentNest Chat Assistant"
+                   style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="Back"
+                    onAction="#handleBack"
+                    style="-fx-background-color: white; -fx-text-fill: #660033;
+                           -fx-background-radius: 8; -fx-padding: 6 16; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <!-- 🔹 Chat Container -->
+    <center>
+        <ScrollPane fx:id="chatScroll"
+                    fitToWidth="true"
+                    hbarPolicy="NEVER"
+                    vbarPolicy="AS_NEEDED"
+                    style="-fx-background-color: transparent;">
+            <VBox fx:id="chatContainer"
+                  spacing="10"
+                  style="-fx-padding: 16; -fx-background-color: #fffafc;"
+                  prefWidth="850"/>
+        </ScrollPane>
+    </center>
+
+    <!-- 🔹 Message Input Area -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 12; -fx-background-color: #f5f0f4;">
+            <TextField fx:id="messageField"
+                       promptText="Type your message..."
+                       HBox.hgrow="ALWAYS"
+                       style="-fx-background-radius: 8; -fx-border-radius: 8;
+                              -fx-border-color: rgba(102,0,51,0.3); -fx-padding: 8;"/>
+            <Button fx:id="sendButton"
+                    text="Send"
+                    onAction="#handleSend"
+                    style="-fx-background-color: #660033; -fx-text-fill: white;
+                           -fx-background-radius: 8; -fx-padding: 8 18; -fx-font-weight: bold;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

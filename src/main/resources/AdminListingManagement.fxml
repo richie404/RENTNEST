@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="AdminListingManagementController"
+      spacing="12"
+      stylesheets="@admin-shared.css">
+
+    <!-- Correct padding syntax -->
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <Label text="📋 All Listings"
+           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="listingTable" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="colTitle" text="Title" prefWidth="180"/>
+            <TableColumn fx:id="colLocation" text="Location" prefWidth="180"/>
+            <TableColumn fx:id="colPrice" text="Price/Month" prefWidth="120"/>
+            <TableColumn fx:id="colOwner" text="Owner ID" prefWidth="100"/>
+            <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="btnApprove" text="Approve" onAction="#handleApprove" styleClass="button-primary"/>
+        <Button fx:id="btnReject" text="Reject" onAction="#handleReject" styleClass="button-primary"/>
+        <Button fx:id="btnView" text="View Details" onAction="#handleViewDetails" styleClass="button-secondary"/>
+        <Button fx:id="btnRefresh" text="Refresh" onAction="#handleRefresh" styleClass="button-secondary"/>
+    </HBox>
+
+</VBox>

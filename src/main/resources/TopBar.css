@@ -1,0 +1,63 @@
+/* =============================================
+   RentNest Universal Sticky TopBar
+   Professional glossy gradient for all roles
+============================================= */
+.topbar {
+    -fx-background-color: linear-gradient(to bottom, #6A1B4D, #591734);
+    -fx-padding: 10 20;
+    -fx-pref-height: 55;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 8, 0.3, 0, 2);
+    -fx-border-color: rgba(255,255,255,0.05);
+    -fx-border-width: 0 0 1 0;
+}
+
+/* Brand */
+.brand {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0, 0, 1);
+}
+
+/* Nav links */
+.nav-link {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-underline: false;
+    -fx-opacity: 0.9;
+}
+.nav-link:hover {
+    -fx-text-fill: #E6D5E9;
+    -fx-underline: true;
+    -fx-opacity: 1.0;
+}
+
+/* User label */
+.user-label {
+    -fx-text-fill: #F5F5F5;
+    -fx-font-size: 13px;
+    -fx-opacity: 0.9;
+}
+
+/* Logout button */
+.btn-primary {
+    -fx-background-color: #E6D5E9;
+    -fx-text-fill: #591734;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 6 14;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.15), 3, 0, 0, 1);
+}
+.btn-primary:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #591734;
+}
+
+/* Keep topbar above all */
+AnchorPane, .topbar {
+    -fx-z-index: 10;
+}

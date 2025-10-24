@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="AdminUserManagementController"
+      spacing="12"
+      stylesheets="@admin-shared.css">
+
+    <!-- ✅ Correct padding syntax -->
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <Label text="👤 Registered Users"
+           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="userTable" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="colId" text="User ID" prefWidth="180"/>
+            <TableColumn fx:id="colName" text="Name" prefWidth="180"/>
+            <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
+            <TableColumn fx:id="colRoles" text="Roles" prefWidth="120"/>
+            <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="btnBan" text="Ban User" onAction="#handleBanUser" styleClass="button-primary"/>
+        <Button fx:id="btnUnban" text="Unban User" onAction="#handleUnbanUser" styleClass="button-primary"/>
+        <Button fx:id="btnDetails" text="View Details" onAction="#handleViewDetails" styleClass="button-secondary"/>
+        <Button fx:id="btnRefresh" text="Refresh" onAction="#handleRefresh" styleClass="button-secondary"/>
+    </HBox>
+
+</VBox>

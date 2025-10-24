@@ -1,0 +1,50 @@
+/* ===== Header (keep yours if you like) ===== */
+.header      { -fx-background-color: linear-gradient(to right, #660033, #993366); -fx-padding: 10 14; }
+.header-title{ -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; }
+.header-btn  { -fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; }
+
+/* ===== ScrollPane & container ===== */
+.chat-scroll            { -fx-background-color: transparent; }
+.chat-scroll > .viewport{ -fx-background-color: transparent; }
+
+.message-container {
+    -fx-background-color: #f7f7f9;
+    -fx-spacing: 12;              /* vertical gap between rows */
+    -fx-padding: 16;
+}
+
+/* ===== Each row that holds one bubble ===== */
+.bubble-row {
+    -fx-padding: 2 8;             /* inner padding per row */
+    -fx-spacing: 6;
+}
+
+/* ===== Bubbles ===== */
+.bubble {
+    -fx-font-size: 14px;
+    -fx-padding: 10 14;
+    -fx-background-radius: 14;
+    -fx-wrap-text: true;
+    -fx-line-spacing: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 4, 0, 0, 1);
+}
+
+/* incoming (left) */
+.bubble-in {
+    -fx-background-color: white;
+    -fx-text-fill: #222;
+    -fx-border-color: rgba(0,0,0,0.08);
+    -fx-border-width: 1;
+}
+
+/* outgoing (right) — dark w/ white text like the reference image */
+.bubble-out {
+    -fx-background-color: #222831;
+    -fx-text-fill: white;
+}
+
+/* input bar */
+.input-bar     { -fx-background-color: white; -fx-padding: 12; -fx-border-color: #ddd; -fx-border-width: 1 0 0 0; }
+.message-field { -fx-padding: 8; -fx-font-size: 14px; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #ccc; }
+.send-button   { -fx-background-color: #660033; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 8 16; }
+.send-button:hover { -fx-background-color: #993366; }

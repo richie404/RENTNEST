@@ -1,0 +1,59 @@
+.root {
+    -fx-font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    -fx-background-color: #fffdfc;
+}
+
+/* HEADER */
+.header {
+    -fx-padding: 14 18;
+    -fx-background-color: -fx-gradient-primary;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-strong, 10, 0.2, 0, 2);
+}
+.header-title {
+    -fx-text-fill: white;
+    -fx-font-size: 26px;
+    -fx-font-weight: 800;
+}
+.button-primary {
+    -fx-background-color: white;
+    -fx-text-fill: #591734;
+    -fx-font-weight: 700;
+    -fx-background-radius: 8;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+.button-primary:hover {
+    -fx-background-color: #E6D5E9;
+}
+
+/* CONTENT */
+.dashboard-content {
+    -fx-padding: 40 40;
+}
+.section-title {
+    -fx-text-fill: #591734;
+    -fx-font-size: 24px;
+    -fx-font-weight: 800;
+}
+
+/* CARDS */
+.dashboard-cards {
+    -fx-padding: 10 0 30 0;
+}
+.dashboard-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-border-color: #E6D5E9;
+    -fx-padding: 20 30;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8, 0, 0, 2);
+}
+.card-title {
+    -fx-text-fill: #591734;
+    -fx-font-weight: 700;
+}
+.card-value {
+    -fx-font-size: 20px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #591734;
+}

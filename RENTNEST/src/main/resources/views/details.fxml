@@ -1,3 +1,0 @@
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.rentnest.controllers.DetailsController"
-            stylesheets="@../css/homepage.css">

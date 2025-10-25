@@ -5,7 +5,7 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="OwnerBookingsController"
-      stylesheets="@admin-shared.css"
+      stylesheets="@shared.css"
       spacing="14">
 
     <padding>
@@ -15,7 +15,7 @@
     <Label text="📅 Manage Property Bookings"
            style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
 
-    <TableView fx:id="bookingTable" prefHeight="420">
+    <TableView fx:id="bookingTable" prefHeight="420" styleClass="table-view">
         <columns>
             <TableColumn fx:id="colId" text="Booking ID" prefWidth="100"/>
             <TableColumn fx:id="colProperty" text="Property ID" prefWidth="100"/>
@@ -33,6 +33,7 @@
         <Button fx:id="btnReject" text="Reject"
                 onAction="#handleReject" styleClass="button-primary"/>
         <Button fx:id="btnCancel" text="Cancel Booking"
-                onAction="#handleCancel" styleClass="button-primary"/>
+                onAction="#handleCancel" styleClass="button-secondary"/>
+        <Button fx:id="btnRefresh" text="Refresh" onAction="#handleRefresh" styleClass="button-secondary"/>
     </HBox>
 </VBox>

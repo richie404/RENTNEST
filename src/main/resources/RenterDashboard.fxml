@@ -64,10 +64,10 @@
                 </Tab>
 
                 <!-- 📅 My Bookings Tab -->
-                <!-- 📅 My Bookings Tab -->
                 <Tab text="My Bookings" closable="false">
-                    <fx:include source="RenterBookings.fxml" fx:id="renterBookingsSection"/>
+                    <fx:include source="RenterBookings.fxml" fx:id="renterBookingsTab"/>
                 </Tab>
+
             </tabs>
         </TabPane>
     </center>

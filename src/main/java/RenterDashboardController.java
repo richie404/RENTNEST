@@ -1,13 +1,14 @@
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.control.ListCell;
+import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.ListCell;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import java.util.List;
+
 
 public class RenterDashboardController extends BaseController {
 
@@ -15,17 +16,12 @@ public class RenterDashboardController extends BaseController {
     @FXML private ListView<Message> messageList;
     @FXML private Button viewChatButton;
 
-    // ✅ FXML injects VBox, not controller
-    @FXML private VBox renterBookingsSection;
-
+    @FXML private VBox renterBookingsInclude;  // ← This matches fx:id in FXML
     private RenterBookingsController renterBookingsController;
     private final ListingDAO listingDAO = new ListingDAO();
     private final MessageDAO messageDAO = new MessageDAO();
     private int renterId;
 
-    /* -----------------------------------------------------------
-       🏠 Initialize dashboard
-       ----------------------------------------------------------- */
     @FXML
     public void initialize() {
         if (!requireRole("RENTER")) return;
@@ -35,6 +31,7 @@ public class RenterDashboardController extends BaseController {
             renterId = user.getId();
         }
 
+        // === Favorites List setup ===
         favoritesList.setCellFactory(v -> new ListCell<>() {
             @Override
             protected void updateItem(Listing l, boolean empty) {
@@ -44,60 +41,58 @@ public class RenterDashboardController extends BaseController {
             }
         });
 
+        // === Messages List setup ===
         messageList.setCellFactory(v -> new ListCell<>() {
             @Override
             protected void updateItem(Message m, boolean empty) {
                 super.updateItem(m, empty);
                 setText((empty || m == null) ? null :
-                        "💬 From Owner ID: " + m.getSenderId() +
+                        "From Owner ID: " + m.getSenderId() +
                                 " | Listing ID: " + m.getListingId() +
                                 "\n" + m.getMessageText());
             }
         });
 
-        if (viewChatButton != null)
-            viewChatButton.disableProperty().bind(messageList.getSelectionModel().selectedItemProperty().isNull());
-
-        // ✅ Get controller for included FXML
-        linkIncludedController();
-    }
-
-    /* -----------------------------------------------------------
-       ✅ Connect included controller
-       ----------------------------------------------------------- */
-    private void linkIncludedController() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/RenterBookings.fxml"));
-            loader.setRoot(renterBookingsSection);
-            loader.load();
-            renterBookingsController = loader.getController();
-        } catch (Exception e) {
-            System.err.println("⚠️ Failed to link RenterBookingsController: " + e.getMessage());
+        if (viewChatButton != null) {
+            viewChatButton.disableProperty().bind(
+                    messageList.getSelectionModel().selectedItemProperty().isNull()
+            );
         }
-    }
 
-    /* -----------------------------------------------------------
-       ✅ Called by Router after login
-       ----------------------------------------------------------- */
-    public void setRenterId(int renterId) {
-        this.renterId = renterId;
-        System.out.println("✅ [RenterDashboardController] Renter ID set: " + renterId);
-
-        // Forward ID to included bookings tab
-        if (renterBookingsController != null) {
-            renterBookingsController.setRenterId(renterId);
-            System.out.println("📤 Forwarded renterId to RenterBookingsController");
-        } else {
-            System.err.println("⚠️ renterBookingsController is null — check fx:include fx:id");
-        }
+        // === Properly initialize included RenterBookingsController ===
+        initRenterBookingsController();
 
         loadFeatured();
         loadMessages();
     }
+    private void initRenterBookingsController() {
+        if (renterBookingsInclude == null) {
+            System.err.println("renterBookingsInclude is null — check fx:id in FXML");
+            return;
+        }
 
-    /* -----------------------------------------------------------
-       🌟 Load featured listings
-       ----------------------------------------------------------- */
+        // Get the FXMLLoader instance from the included root's properties
+        Object loaderObj = renterBookingsInclude.getProperties().get(FXMLLoader.class);
+        if (loaderObj instanceof FXMLLoader loader) {
+            renterBookingsController = loader.getController();
+            if (renterBookingsController != null && renterId > 0) {
+                renterBookingsController.setRenterId(renterId);
+                System.out.println("RenterBookingsController initialized and renterId set: " + renterId);
+            } else {
+                System.err.println("Failed to get RenterBookingsController or renterId invalid");
+            }
+        } else {
+            System.err.println("FXMLLoader not found in renterBookingsInclude properties");
+        }
+    }
+
+    // ✅ Called by Router to set renter and refresh
+    public void setRenterId(int renterId) {
+        this.renterId = renterId;
+        loadFeatured();
+        loadMessages();
+        initRenterBookingsController(); // Refresh bookings
+    }
     private void loadFeatured() {
         try {
             List<Listing> featured = listingDAO.findFeatured(6);
@@ -107,9 +102,6 @@ public class RenterDashboardController extends BaseController {
         }
     }
 
-    /* -----------------------------------------------------------
-       💬 Load renter messages
-       ----------------------------------------------------------- */
     private void loadMessages() {
         try {
             List<Message> msgs = messageDAO.getMessagesForUser(renterId);
@@ -119,9 +111,6 @@ public class RenterDashboardController extends BaseController {
         }
     }
 
-    /* -----------------------------------------------------------
-       💬 Open chat
-       ----------------------------------------------------------- */
     @FXML
     private void handleViewChat() {
         Message selected = messageList.getSelectionModel().getSelectedItem();
@@ -156,22 +145,14 @@ public class RenterDashboardController extends BaseController {
         }
     }
 
-    /* -----------------------------------------------------------
-       🔄 Refresh / Reload
-       ----------------------------------------------------------- */
     @FXML
     private void handleRefresh() {
         loadFeatured();
         loadMessages();
-
-        if (renterBookingsController != null)
-            renterBookingsController.setRenterId(renterId);
+        initRenterBookingsController(); // Ensures bookings reload
     }
-
-    /* -----------------------------------------------------------
-       🔗 Navigation
-       ----------------------------------------------------------- */
     @FXML private void handleBrowse() { Router.goToBrowse(); }
+
     @FXML private void handleHome() { Router.goToHomepage(); }
 
     @FXML
@@ -181,9 +162,6 @@ public class RenterDashboardController extends BaseController {
         Router.goToHomepage();
     }
 
-    /* -----------------------------------------------------------
-       ⚙️ Helper
-       ----------------------------------------------------------- */
     private void showAlert(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

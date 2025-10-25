@@ -30,7 +30,7 @@
             </padding>
 
             <!-- ✅ TableView Styled -->
-            <TableView fx:id="table" prefHeight="400" prefWidth="700">
+            <TableView fx:id="table" prefHeight="400" prefWidth="700" styleClass="table-view">
                 <columns>
                     <TableColumn fx:id="colTitle" text="Title" prefWidth="150"/>
                     <TableColumn fx:id="colType" text="Type" prefWidth="100"/>

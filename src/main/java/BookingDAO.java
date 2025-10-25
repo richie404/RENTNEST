@@ -110,20 +110,39 @@ public class BookingDAO {
         return false;
     }
 
+    /* -----------------------------------------------------------
+       ✅ Fixed: Get renter bookings with property info
+       ----------------------------------------------------------- */
     public List<Booking> getBookingsByRenter(int renterId) {
         List<Booking> list = new ArrayList<>();
-        String sql = "SELECT * FROM bookings WHERE renter_id = ? ORDER BY created_at DESC";
+        String sql = "SELECT b.*, l.name AS listing_name, l.location, l.price " +
+                "FROM bookings b " +
+                "JOIN listings l ON b.listing_id = l.id " +
+                "WHERE b.renter_id = ? ORDER BY b.created_at DESC";
+
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setInt(1, renterId);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) list.add(extractBooking(rs));
+
+            while (rs.next()) {
+                Booking b = extractBooking(rs);
+                b.setListingName(rs.getString("listing_name"));
+                b.setLocation(rs.getString("location"));
+                b.setPrice(rs.getDouble("price"));
+                list.add(b);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
     }
 
+    /* -----------------------------------------------------------
+       🔹 Get bookings by owner (unchanged)
+       ----------------------------------------------------------- */
     public List<Booking> getBookingsByOwner(int ownerId) {
         List<Booking> list = new ArrayList<>();
         String sql = "SELECT * FROM bookings WHERE owner_id = ? ORDER BY created_at DESC";
@@ -138,6 +157,9 @@ public class BookingDAO {
         return list;
     }
 
+    /* -----------------------------------------------------------
+       🔹 Extract core booking info
+       ----------------------------------------------------------- */
     private Booking extractBooking(ResultSet rs) throws SQLException {
         Booking b = new Booking();
         b.setId(rs.getInt("id"));
@@ -151,6 +173,10 @@ public class BookingDAO {
         b.setCreatedAt(rs.getTimestamp("created_at"));
         return b;
     }
+
+    /* -----------------------------------------------------------
+       🔹 Cancel booking
+       ----------------------------------------------------------- */
     public boolean cancelBooking(int bookingId) {
         String sql = "UPDATE bookings SET status = 'CANCELLED_BY_RENTER' WHERE id = ?";
         try (Connection conn = DBUtil.getConnection();
@@ -162,6 +188,4 @@ public class BookingDAO {
             return false;
         }
     }
-
-
 }

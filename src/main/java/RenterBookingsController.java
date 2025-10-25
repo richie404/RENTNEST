@@ -8,8 +8,10 @@ public class RenterBookingsController {
 
     @FXML private TableView<Booking> bookingTable;
     @FXML private TableColumn<Booking, Integer> colBookingId;
-    @FXML private TableColumn<Booking, Integer> colListing;   // ✅ clearer name
+    @FXML private TableColumn<Booking, Integer> colListing;
     @FXML private TableColumn<Booking, Integer> colOwner;
+    @FXML private TableColumn<Booking, String> colProperty;
+    @FXML private TableColumn<Booking, String> colLocation;
     @FXML private TableColumn<Booking, java.sql.Date> colStart;
     @FXML private TableColumn<Booking, java.sql.Date> colEnd;
     @FXML private TableColumn<Booking, Double> colAmount;
@@ -19,35 +21,27 @@ public class RenterBookingsController {
     @FXML private Button btnRefresh;
 
     private final BookingDAO bookingDAO = new BookingDAO();
-    private int renterId; // ✅ local renterId (set by dashboard)
+    private int renterId;
 
-    /* -----------------------------------------------------------
-       ✅ Initialization
-       ----------------------------------------------------------- */
     @FXML
     private void initialize() {
-        // ✅ Map table columns
         colBookingId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colListing.setCellValueFactory(new PropertyValueFactory<>("listingId"));
         colOwner.setCellValueFactory(new PropertyValueFactory<>("ownerId"));
+        colProperty.setCellValueFactory(new PropertyValueFactory<>("listingName"));
+        colLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
         colStart.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         colEnd.setCellValueFactory(new PropertyValueFactory<>("endDate"));
         colAmount.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
     }
 
-    /* -----------------------------------------------------------
-       ✅ Called after login by RenterDashboardController
-       ----------------------------------------------------------- */
     public void setRenterId(int renterId) {
         this.renterId = renterId;
         System.out.println("✅ [RenterBookingsController] renterId set: " + renterId);
         loadBookings();
     }
 
-    /* -----------------------------------------------------------
-       ✅ Load bookings for the logged-in renter
-       ----------------------------------------------------------- */
     private void loadBookings() {
         if (renterId <= 0) {
             System.out.println("⚠️ No renterId set — skipping load.");
@@ -65,9 +59,6 @@ public class RenterBookingsController {
         }
     }
 
-    /* -----------------------------------------------------------
-       🔹 Cancel booking
-       ----------------------------------------------------------- */
     @FXML
     private void handleCancel() {
         Booking selected = bookingTable.getSelectionModel().getSelectedItem();
@@ -90,23 +81,17 @@ public class RenterBookingsController {
         boolean success = bookingDAO.cancelBooking(selected.getId());
         if (success) {
             showAlert("Cancelled", "Your booking has been cancelled successfully.");
-            loadBookings(); // ✅ refresh
+            loadBookings();
         } else {
             showAlert("Error", "Failed to cancel booking.");
         }
     }
 
-    /* -----------------------------------------------------------
-       🔹 Manual refresh
-       ----------------------------------------------------------- */
     @FXML
     private void handleRefresh() {
         loadBookings();
     }
 
-    /* -----------------------------------------------------------
-       🔹 Utility alert helper
-       ----------------------------------------------------------- */
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

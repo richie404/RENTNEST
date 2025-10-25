@@ -121,4 +121,8 @@ public class OwnerBookingsController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+    @FXML
+    private void handleRefresh() {
+        loadBookings();
+    }
 }

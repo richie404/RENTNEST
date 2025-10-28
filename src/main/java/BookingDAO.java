@@ -1,3 +1,4 @@
+// File: BookingDAO.java
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,15 +29,17 @@ public class BookingDAO {
     }
 
     /* -----------------------------------------------------------
-       🔹 Check Property Availability
+       🔹 Check Property Availability (fixed overlap logic)
        ----------------------------------------------------------- */
     public boolean isPropertyAvailable(int listingId, Date startDate, Date endDate) {
-        String sql = """
-        SELECT COUNT(*) FROM bookings
-        WHERE listing_id = ?
-          AND status IN ('PENDING','APPROVED','CONFIRMED','PENDING_OWNER_APPROVAL')
-          AND (? BETWEEN start_date AND end_date OR ? BETWEEN start_date AND end_date)
-    """;
+        // Overlap exists when (newStart <= existingEnd) AND (newEnd >= existingStart)
+        final String sql = """
+            SELECT COUNT(*)
+            FROM bookings
+            WHERE listing_id = ?
+              AND status IN ('PENDING_OWNER_APPROVAL','CONFIRMED','APPROVED','PENDING')
+              AND (? <= end_date AND ? >= start_date)
+        """;
 
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -46,7 +49,7 @@ public class BookingDAO {
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return rs.getInt(1) == 0; // ✅ available if no overlaps
+                return rs.getInt(1) == 0; // available if no overlaps
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -111,7 +114,7 @@ public class BookingDAO {
     }
 
     /* -----------------------------------------------------------
-       ✅ Fixed: Get renter bookings with property info
+       ✅ Get renter bookings with property info
        ----------------------------------------------------------- */
     public List<Booking> getBookingsByRenter(int renterId) {
         List<Booking> list = new ArrayList<>();
@@ -141,7 +144,7 @@ public class BookingDAO {
     }
 
     /* -----------------------------------------------------------
-       🔹 Get bookings by owner (unchanged)
+       🔹 Get bookings by owner
        ----------------------------------------------------------- */
     public List<Booking> getBookingsByOwner(int ownerId) {
         List<Booking> list = new ArrayList<>();
@@ -175,7 +178,7 @@ public class BookingDAO {
     }
 
     /* -----------------------------------------------------------
-       🔹 Cancel booking
+       🔹 Cancel booking (by renter)
        ----------------------------------------------------------- */
     public boolean cancelBooking(int bookingId) {
         String sql = "UPDATE bookings SET status = 'CANCELLED_BY_RENTER' WHERE id = ?";

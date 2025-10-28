@@ -1,8 +1,11 @@
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.util.Set;
 
 public class RenterBookingsController {
 
@@ -34,6 +37,21 @@ public class RenterBookingsController {
         colEnd.setCellValueFactory(new PropertyValueFactory<>("endDate"));
         colAmount.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        // UX: enable Cancel only for cancellable states
+        if (btnCancel != null) {
+            btnCancel.disableProperty().bind(
+                    Bindings.createBooleanBinding(() -> {
+                        Booking b = bookingTable.getSelectionModel().getSelectedItem();
+                        if (b == null) return true;
+                        String s = b.getStatus() == null ? "" : b.getStatus().toUpperCase();
+                        Set<String> cancellable = Set.of(
+                                "PENDING_OWNER_APPROVAL", "PENDING", "APPROVED"
+                        );
+                        return !cancellable.contains(s);
+                    }, bookingTable.getSelectionModel().selectedItemProperty())
+            );
+        }
     }
 
     public void setRenterId(int renterId) {
@@ -67,13 +85,12 @@ public class RenterBookingsController {
             return;
         }
 
-        String status = selected.getStatus();
-        if ("CANCELLED_BY_RENTER".equalsIgnoreCase(status)) {
+        String status = selected.getStatus() == null ? "" : selected.getStatus().toUpperCase();
+        if ("CANCELLED_BY_RENTER".equals(status)) {
             showAlert("Info", "You already cancelled this booking.");
             return;
         }
-
-        if ("CONFIRMED".equalsIgnoreCase(status)) {
+        if ("CONFIRMED".equals(status)) {
             showAlert("Info", "Confirmed bookings cannot be cancelled directly.");
             return;
         }

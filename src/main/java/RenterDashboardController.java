@@ -1,14 +1,13 @@
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.ListCell;
-import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 
+import java.util.List;
 
 public class RenterDashboardController extends BaseController {
 
@@ -16,8 +15,10 @@ public class RenterDashboardController extends BaseController {
     @FXML private ListView<Message> messageList;
     @FXML private Button viewChatButton;
 
-    @FXML private VBox renterBookingsInclude;  // ← This matches fx:id in FXML
-    private RenterBookingsController renterBookingsController;
+    // 🔑 JavaFX will inject the included controller:
+    // <fx:include source="RenterBookings.fxml" fx:id="renterBookingsTab"/>
+    @FXML private RenterBookingsController renterBookingsTabController;
+
     private final ListingDAO listingDAO = new ListingDAO();
     private final MessageDAO messageDAO = new MessageDAO();
     private int renterId;
@@ -31,7 +32,7 @@ public class RenterDashboardController extends BaseController {
             renterId = user.getId();
         }
 
-        // === Favorites List setup ===
+        // Favorites list
         favoritesList.setCellFactory(v -> new ListCell<>() {
             @Override
             protected void updateItem(Listing l, boolean empty) {
@@ -41,7 +42,7 @@ public class RenterDashboardController extends BaseController {
             }
         });
 
-        // === Messages List setup ===
+        // Messages list
         messageList.setCellFactory(v -> new ListCell<>() {
             @Override
             protected void updateItem(Message m, boolean empty) {
@@ -59,40 +60,26 @@ public class RenterDashboardController extends BaseController {
             );
         }
 
-        // === Properly initialize included RenterBookingsController ===
-        initRenterBookingsController();
+        // 🔗 pass renterId into the included bookings controller
+        if (renterBookingsTabController != null && renterId > 0) {
+            renterBookingsTabController.setRenterId(renterId);
+        }
 
         loadFeatured();
         loadMessages();
     }
-    private void initRenterBookingsController() {
-        if (renterBookingsInclude == null) {
-            System.err.println("renterBookingsInclude is null — check fx:id in FXML");
-            return;
-        }
 
-        // Get the FXMLLoader instance from the included root's properties
-        Object loaderObj = renterBookingsInclude.getProperties().get(FXMLLoader.class);
-        if (loaderObj instanceof FXMLLoader loader) {
-            renterBookingsController = loader.getController();
-            if (renterBookingsController != null && renterId > 0) {
-                renterBookingsController.setRenterId(renterId);
-                System.out.println("RenterBookingsController initialized and renterId set: " + renterId);
-            } else {
-                System.err.println("Failed to get RenterBookingsController or renterId invalid");
-            }
-        } else {
-            System.err.println("FXMLLoader not found in renterBookingsInclude properties");
-        }
-    }
-
-    // ✅ Called by Router to set renter and refresh
+    // Called by Router when navigating here with a renter id
     public void setRenterId(int renterId) {
         this.renterId = renterId;
         loadFeatured();
         loadMessages();
-        initRenterBookingsController(); // Refresh bookings
+
+        if (renterBookingsTabController != null && renterId > 0) {
+            renterBookingsTabController.setRenterId(renterId);
+        }
     }
+
     private void loadFeatured() {
         try {
             List<Listing> featured = listingDAO.findFeatured(6);
@@ -149,10 +136,12 @@ public class RenterDashboardController extends BaseController {
     private void handleRefresh() {
         loadFeatured();
         loadMessages();
-        initRenterBookingsController(); // Ensures bookings reload
+        if (renterBookingsTabController != null && renterId > 0) {
+            renterBookingsTabController.setRenterId(renterId); // ensures bookings reload
+        }
     }
-    @FXML private void handleBrowse() { Router.goToBrowse(); }
 
+    @FXML private void handleBrowse() { Router.goToBrowse(); }
     @FXML private void handleHome() { Router.goToHomepage(); }
 
     @FXML

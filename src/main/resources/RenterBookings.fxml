@@ -33,7 +33,8 @@
 
     <!-- Buttons -->
     <HBox spacing="12" alignment="CENTER_RIGHT">
-        <Button text="Cancel Booking" onAction="#handleCancel" styleClass="button-primary"/>
+        <!-- ❗ Added fx:id so controller gets injected -->
+        <Button fx:id="btnCancel" text="Cancel Booking" onAction="#handleCancel" styleClass="button-primary"/>
         <Button fx:id="btnRefresh" text="Refresh" onAction="#handleRefresh" styleClass="button-secondary"/>
     </HBox>
 </VBox>

@@ -8,17 +8,14 @@
             stylesheets="@RenterDashboard.css"
             prefWidth="950" prefHeight="700">
 
-    <!-- 🔹 Shared Top Bar -->
     <top>
         <fx:include source="TopBar.fxml" fx:id="topBar"/>
     </top>
 
-    <!-- 🔹 Dashboard Tabs -->
     <center>
         <TabPane prefWidth="900" prefHeight="650">
             <tabs>
 
-                <!-- 🏡 Dashboard Tab -->
                 <Tab text="Dashboard" closable="false">
                     <BorderPane>
                         <top>
@@ -46,7 +43,6 @@
                     </BorderPane>
                 </Tab>
 
-                <!-- 💬 Messages Tab -->
                 <Tab text="Messages" closable="false">
                     <VBox spacing="12" alignment="TOP_CENTER" style="-fx-padding: 20;">
                         <Label text="Your Chat History" styleClass="page-title"/>

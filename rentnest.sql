@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2025 at 05:08 PM
+-- Generation Time: Oct 28, 2025 at 02:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -69,8 +69,8 @@ CREATE TABLE `favorites` (
 --
 
 INSERT INTO `favorites` (`id`, `user_id`, `listing_id`, `created_at`) VALUES
-(1, 3, 1, '2025-10-23 16:46:55'),
-(2, 3, 2, '2025-10-23 16:46:55'),
+(1, 12, 1, '2025-10-23 16:46:55'),
+(2, 5, 2, '2025-10-23 16:46:55'),
 (3, 4, 3, '2025-10-23 16:46:55');
 
 -- --------------------------------------------------------
@@ -115,7 +115,7 @@ INSERT INTO `listings` (`id`, `name`, `location`, `price`, `owner_id`, `created_
 (2, 'Luxury Flat with Balcony', 'Banani, Dhaka', 25000.00, 2, '2025-10-12 21:17:18', 'APPROVED', 1),
 (3, 'Family Apartment', 'Uttara Sector 7, Dhaka', 18000.00, 2, '2025-10-11 21:17:18', 'APPROVED', 1),
 (4, 'Single Room Apartment', 'Mirpur DOHS, Dhaka', 9000.00, 2, '2025-10-15 21:17:18', 'APPROVED', 1),
-(5, 'Furnished Duplex', 'Bashundhara R/A, Dhaka', 32000.00, 2, '2025-10-10 21:17:18', 'APPROVED', 1),
+(5, 'Furnished Duplex', 'Bashundhara R/A, Dhaka', 32000.00, 2, '2025-10-10 21:17:18', 'REJECTED', 1),
 (6, 'Budget Studio', 'Mohakhali DOHS, Dhaka', 8500.00, 2, '2025-10-08 21:17:18', 'APPROVED', 1),
 (7, 'Corner View Apartment', 'Dhanmondi 10, Dhaka', 22000.00, 3, '2025-10-13 21:17:18', 'APPROVED', 1),
 (8, 'Modern 2BHK', 'Badda, Dhaka', 17000.00, 2, '2025-10-09 21:17:18', 'APPROVED', 1),
@@ -215,7 +215,8 @@ INSERT INTO `messages` (`id`, `listing_id`, `sender_id`, `receiver_id`, `message
 (21, 21, 11, 7, 'ammu????', '2025-10-19 15:26:54'),
 (22, 21, 7, 11, 'chacha', '2025-10-19 15:27:30'),
 (23, 21, 11, 11, 'ammu', '2025-10-19 15:28:07'),
-(24, 21, 12, 7, 'hello', '2025-10-24 03:17:02');
+(24, 21, 12, 7, 'hello', '2025-10-24 03:17:02'),
+(25, 21, 1, 7, 'yow', '2025-10-25 19:50:12');
 
 -- --------------------------------------------------------
 
@@ -267,9 +268,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `role`, `created_at`, `status`, `active`) VALUES
-(1, 'Admin', 'admin@rentnest.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'ADMIN', '2025-10-16 21:17:18', 'ACTIVE', 1),
+(1, 'Admin', 'admin@rentnest.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'ADMIN', '2025-10-09 21:17:18', 'ACTIVE', 1),
 (2, 'Alice', 'alice@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'OWNER', '2025-10-16 21:17:18', 'ACTIVE', 1),
-(3, 'Bob', 'bob@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'OWNER', '2025-10-16 21:17:18', 'ACTIVE', 1),
+(3, 'Bob', 'bob@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'OWNER', '2025-10-16 21:17:18', 'ACTIVE', 0),
 (4, 'Charlie', 'charlie@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'RENTER', '2025-10-16 21:17:18', 'ACTIVE', 1),
 (5, 'Alam', 'alam@gmail.com', 'fa7aa2ec12d43c41b00934841fc4324bf1dc7c0973185c404e3a8ebe8b0b9164', 'RENTER', '2025-10-16 21:17:18', 'ACTIVE', 1),
 (6, 'alam', 'alam@mail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'OWNER', '2025-10-16 21:29:18', 'ACTIVE', 1),
@@ -394,7 +395,7 @@ ALTER TABLE `listing_photos`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `payments`

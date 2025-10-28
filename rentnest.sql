@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2025 at 02:53 PM
+-- Generation Time: Oct 28, 2025 at 03:48 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,9 +44,9 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`id`, `listing_id`, `renter_id`, `owner_id`, `start_date`, `end_date`, `total_amount`, `status`, `created_at`) VALUES
-(21, 1, 1, 2, '2025-09-01', '2025-10-01', 10000.00, 'PENDING', '2025-10-22 18:58:28'),
+(21, 1, 12, 2, '2025-09-01', '2025-10-01', 10000.00, 'PENDING', '2025-10-22 18:58:28'),
 (23, 1, 3, 2, '2025-10-25', '2025-11-25', 20000.00, 'CONFIRMED', '2025-10-23 16:46:21'),
-(24, 2, 4, 2, '2025-10-23', '2025-11-23', 18000.00, 'PENDING_OWNER_APPROVAL', '2025-10-23 16:46:21'),
+(24, 2, 4, 2, '2025-10-23', '2025-11-23', 18000.00, 'CONFIRMED', '2025-10-23 16:46:21'),
 (25, 3, 5, 2, '2025-10-28', '2025-11-28', 22000.00, 'CANCELLED', '2025-10-23 16:46:21'),
 (26, 21, 12, 7, '2026-11-01', '2026-12-01', 25000.00, 'CONFIRMED', '2025-10-23 21:17:33'),
 (27, 4, 13, 2, '2025-10-10', '2025-11-10', 9000.00, 'CONFIRMED', '2025-10-24 13:21:57');
@@ -192,8 +192,8 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `listing_id`, `sender_id`, `receiver_id`, `message_text`, `timestamp`) VALUES
-(1, 1, 1, 2, 'Hi! Is this studio still available?', '2025-10-17 20:40:29'),
-(2, 1, 2, 1, 'Yes, it’s still available! When would you like to visit?', '2025-10-17 20:40:29'),
+(1, 1, 3, 2, 'Hi! Is this studio still available?', '2025-10-17 20:40:29'),
+(2, 1, 2, 4, 'Yes, it’s still available! When would you like to visit?', '2025-10-17 20:40:29'),
 (3, 2, 3, 2, 'Can you share more pictures of the balcony?', '2025-10-17 20:40:29'),
 (4, 2, 2, 3, 'Sure! I’ll upload them shortly.', '2025-10-17 20:40:29'),
 (5, 12, 3, 7, 'Hi! I saw your Banani penthouse listing — is it still open?', '2025-10-15 09:20:00'),
@@ -270,7 +270,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `role`, `created_at`, `status`, `active`) VALUES
 (1, 'Admin', 'admin@rentnest.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'ADMIN', '2025-10-09 21:17:18', 'ACTIVE', 1),
 (2, 'Alice', 'alice@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'OWNER', '2025-10-16 21:17:18', 'ACTIVE', 1),
-(3, 'Bob', 'bob@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'OWNER', '2025-10-16 21:17:18', 'ACTIVE', 0),
+(3, 'Bob', 'bob@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'OWNER', '2025-10-16 21:17:18', 'ACTIVE', 1),
 (4, 'Charlie', 'charlie@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'RENTER', '2025-10-16 21:17:18', 'ACTIVE', 1),
 (5, 'Alam', 'alam@gmail.com', 'fa7aa2ec12d43c41b00934841fc4324bf1dc7c0973185c404e3a8ebe8b0b9164', 'RENTER', '2025-10-16 21:17:18', 'ACTIVE', 1),
 (6, 'alam', 'alam@mail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'OWNER', '2025-10-16 21:29:18', 'ACTIVE', 1),
